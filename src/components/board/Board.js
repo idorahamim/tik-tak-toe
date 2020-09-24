@@ -1,31 +1,25 @@
-import React, {Component} from "react";
+import React from "react";
 import Square from '../square/Square'
-import {calculateWinner} from '../../utils'
 
 class Board extends React.Component {
 
-    renderSquare(i) {
-        return <Square value={this.props.squares[i]}
-                       onClick={() => this.props.onClick(i)}/>;
+    renderSquares(indexes) {
+        return indexes.map(index => <Square value={this.props.squares[index]}
+                                            onClick={() => this.props.onClick(index)}/>)
     }
 
     render() {
         return (
             <div>
                 <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+
+                    {this.renderSquares([0, 1, 2])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                    {this.renderSquares([3, 4, 5])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                    {this.renderSquares([6, 7, 8])}
                 </div>
             </div>
         );
