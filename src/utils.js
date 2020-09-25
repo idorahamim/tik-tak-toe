@@ -9,6 +9,9 @@ export const calculateWinner = (squares) => {
         [0, 4, 8],
         [2, 4, 6],
     ];
+
+    if (isTie(squares))
+        return 'tie';
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
@@ -16,4 +19,15 @@ export const calculateWinner = (squares) => {
         }
     }
     return null;
-}
+};
+
+const isTie = (squares) => {
+    let nullSquares = 0;
+    squares.forEach(index => {
+        if (index == null)
+            nullSquares += 1;
+    });
+    if (nullSquares == 0)
+        return true;
+    return false;
+};
