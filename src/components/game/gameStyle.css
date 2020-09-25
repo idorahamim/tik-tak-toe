@@ -1,0 +1,17 @@
+.game {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:"main info"
+                        "main info"
+                        "main info";
+    grid-gap: 10px;
+    padding: 10px;
+    margin: 10px;
+    border: solid 2px #000000;
+}
+.game-board{
+    grid-area: info;
+}
+.game-info{
+    grid-area: main;
+}

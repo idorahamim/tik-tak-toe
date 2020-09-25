@@ -1,6 +1,7 @@
 import React from "react";
 import Board from "../board/Board";
 import {calculateWinner} from "../../utils";
+import './gameStyle.css'
 
 class Game extends React.Component {
     constructor(props) {
@@ -37,6 +38,14 @@ class Game extends React.Component {
         });
     }
 
+    resetGame() {
+        this.setState({
+            stepNumber: 0,
+            xIsNext: true,
+            history: this.state.history.slice(0, 1)
+        });
+    }
+
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
@@ -55,7 +64,7 @@ class Game extends React.Component {
 
         let status;
         if (winner) {
-            status = 'Winner: ' + winner;
+            status = 'The Winner is: ' + winner;
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
@@ -69,6 +78,7 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
+                    <button onClick={() => this.resetGame()}>Play Again</button>
                     <ol>{moves}</ol>
                 </div>
             </div>
